@@ -5,6 +5,27 @@ const CyberSecurity = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const toolsRef = useRef(null);
 
+  const themeColors = {
+    background: '#0f172a',
+    surface: '#0f172a',
+    surface17: 'rgba(15, 23, 42, 0.7)',
+    text: '#e2e8f0',
+    textMuted: '#94a3b8',
+    primary: '#6C63FF',
+    primaryDark: '#554fee',
+    secondary: '#FF6584',
+    accent: '#6C63FF',
+    cyan: '#22d3ee',
+    cyanDark: '#0ea5e9',
+    green: '#22c55e',
+    border: '#1e293b',
+    gradientA: 'linear-gradient(90deg, #6C63FF 0%, #FF6584 100%)',
+    gradientB: 'linear-gradient(90deg, #6C63FF 0%, #FF6584 100%)',
+    gradientC: 'linear-gradient(90deg, #6C63FF 0%, #FF6584 100%)',
+    gradientD: 'linear-gradient(90deg, #6C63FF 0%, #FF6584 100%)',
+    textGradient: 'linear-gradient(90deg, #6C63FF 0%, #FF6584 100%)',
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setShowFloatCta(window.scrollY > 400);
@@ -55,39 +76,57 @@ const CyberSecurity = () => {
 
   // SVG Icons
   const CheckIcon = () => (
-    <svg className="w-4 h-4 text-green-400 group-hover:text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" style={{ stroke: 'url(#grad)' }} />
     </svg>
   );
 
   const FormCheckIcon = () => (
-    <svg className="w-12 h-12 mx-auto text-green-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg className="w-12 h-12 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{ stroke: 'url(#iconGrad)' }}>
+      <defs>
+        <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style={{ stopColor: '#6C63FF', stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: '#FF6584', stopOpacity: 1 }} />
+        </linearGradient>
+      </defs>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-purple-500/30">
+    <div
+      className="min-h-screen text-slate-200 font-sans"
+      style={{
+        backgroundColor: themeColors.background,
+        color: themeColors.text,
+        '--pc-text-muted': themeColors.textMuted,
+        '--pc-border': themeColors.border,
+        '--pc-surface': themeColors.surface,
+      }}
+    >
       
       {/* ── Salso TICKY HEADER ── */}
       <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-purple-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="text-xl md:text-2xl font-black tracking-tight text-white w-full sm:w-auto text-center sm:text-left">
-            PEOPLECLICK <span className="text-purple-500">LEARNING</span>
+            PEOPLECLICK <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>LEARNING</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-end gap-2 w-full sm:w-auto">
-            <a href="tel:+918925449073" className="w-full sm:w-48 md:w-auto flex items-center justify-center md:justify-start gap-2 bg-gradient-to-r from-purple-600/80 via-violet-700/70 to-indigo-600/80 hover:from-purple-500 hover:via-violet-600 hover:to-indigo-500 text-white font-semibold text-[10px] md:text-sm py-2 px-3 md:px-4 rounded-full transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-purple-500/30 border border-indigo-500/40 min-w-0">
+            <a href="tel:+918925449073" className="w-full sm:w-48 md:w-auto flex items-center justify-center md:justify-start gap-2 text-white font-semibold text-[10px] md:text-sm py-2 px-3 md:px-4 rounded-full transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-purple-500/30 border border-indigo-500/40 min-w-0"
+              style={{ backgroundImage: themeColors.gradientA }}>
               <span className="text-[8px] md:text-xs uppercase tracking-wide">Coimbatore</span>
               <span className="text-[10px] md:text-sm whitespace-nowrap">📞 +91 8925 449 073</span>
             </a>
 
-            <a href="tel:+917619343001" className="w-full sm:w-48 md:w-auto flex items-center justify-center md:justify-start gap-2 bg-gradient-to-r from-cyan-600/80 via-blue-700/70 to-indigo-600/80 hover:from-cyan-500 hover:via-blue-600 hover:to-indigo-500 text-white font-semibold text-[10px] md:text-sm py-2 px-3 md:px-4 rounded-full transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-blue-500/30 border border-indigo-500/40 min-w-0">
+            <a href="tel:+917619343001" className="w-full sm:w-48 md:w-auto flex items-center justify-center md:justify-start gap-2 text-white font-semibold text-[10px] md:text-sm py-2 px-3 md:px-4 rounded-full transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-blue-500/30 border border-indigo-500/40 min-w-0"
+              style={{ backgroundImage: themeColors.gradientB }}>
               <span className="text-[8px] md:text-xs uppercase tracking-wide">Bangalore</span>
               <span className="text-[10px] md:text-sm whitespace-nowrap">📞 +91 7619 343 001</span>
             </a>
 
-            <a href="#lead-form" className="w-full sm:w-60 md:w-auto text-center bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm py-2 px-4 rounded-full shadow-lg shadow-purple-600/20 transition-all hover:scale-105">
+            <a href="#lead-form" className="w-full sm:w-60 md:w-auto text-center text-white font-bold text-xs sm:text-sm py-2 px-4 rounded-full shadow-lg shadow-purple-600/20 transition-all hover:scale-105"
+              style={{ backgroundImage: themeColors.gradientA }}>
               Get Free Demo
             </a>
           </div>
@@ -106,13 +145,13 @@ const CyberSecurity = () => {
             
             {/* Left: Copy */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-wider mb-6">
-                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider mb-6" style={{ backgroundColor: 'rgba(108, 99, 255, 0.1)', borderColor: 'rgba(255, 101, 132, 0.3)', backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: '#6C63FF' }}></span>
                 Now Immediately Enrolling
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-6">
-                Master <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">Cyber Security</span><br className="hidden sm:block" />              
+                Master <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>Cyber Security</span><br className="hidden sm:block" />              
               </h1>
               
               <p className="text-lg text-slate-400 mb-8 max-w-2xl leading-relaxed">
@@ -163,20 +202,20 @@ const CyberSecurity = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-4 text-left">
                       <div>
-                        <label className="block text-xs font-semibold text-purple-400 mb-1.5 uppercase tracking-wide">Full Name *</label>
-                        <input required type="text" placeholder="Your full name" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors" />
+                        <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Full Name *</label>
+                        <input required type="text" placeholder="Your full name" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none transition-colors" style={{ focusBorderColor: '#6C63FF', focusRingColor: '#6C63FF' }} />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-purple-400 mb-1.5 uppercase tracking-wide">Phone Number *</label>
-                        <input required type="tel" placeholder="+91 XXXXX XXXXX" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors" />
+                        <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Phone Number *</label>
+                        <input required type="tel" placeholder="+91 XXXXX XXXXX" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none transition-colors" />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-purple-400 mb-1.5 uppercase tracking-wide">Email Address *</label>
-                        <input required type="email" placeholder="you@email.com" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors" />
+                        <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Email Address *</label>
+                        <input required type="email" placeholder="you@email.com" className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none transition-colors" />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-purple-400 mb-1.5 uppercase tracking-wide">Preferred Schedule</label>
-                        <select className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-colors appearance-none">
+                        <label className="block text-xs font-semibold mb-1.5 uppercase tracking-wide" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Preferred Schedule</label>
+                        <select className="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-lg px-4 py-3 focus:outline-none transition-colors appearance-none">
                           <option value="">Select Schedule</option>
                           <option value="weekday">Weekday Batches</option>
                           <option value="weekend">Weekend Batches</option>
@@ -412,23 +451,23 @@ const CyberSecurity = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">500+</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>500+</div>
               <div className="text-sm text-slate-300 font-medium">Students Certified</div>
             </div>
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">100%</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>100%</div>
               <div className="text-sm text-slate-300 font-medium">Placement Assistance</div>
             </div>
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">10+</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>10+</div>
               <div className="text-sm text-slate-300 font-medium">Live Projects</div>
             </div>
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">20+</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>20+</div>
               <div className="text-sm text-slate-300 font-medium">Tools Mastered</div>
             </div>
             <div className="hidden lg:block p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">24/7</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>24/7</div>
               <div className="text-sm text-slate-300 font-medium">Lab Access</div>
             </div>
           </div>
@@ -439,7 +478,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Curriculum</div>
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Curriculum</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Advanced Cyber Security Syllabus</h2>
             <p className="text-slate-400 max-w-2xl text-lg">From basic networking to advanced penetration testing, our curriculum is designed to make you industry-ready from day one.</p>
           </div>
@@ -455,14 +494,14 @@ const CyberSecurity = () => {
             ].map((mod, i) => (
               <div key={i} className="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-purple-500 transition-all hover:-translate-y-1 group">
                 <div className="text-center">
-                <div className="mx-auto w-12 h-12 bg-purple-500/10 border border-purple-500/30 rounded-xl flex items-center justify-center text-purple-400 font-black mb-4">
+                <div className="mx-auto w-12 h-12 rounded-xl flex items-center justify-center font-black mb-4" style={{ backgroundColor: 'rgba(108, 99, 255, 0.1)', borderColor: 'rgba(255, 101, 132, 0.3)', border: '1px solid rgba(255, 101, 132, 0.3)', backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent', backgroundClip: 'text' }}>
                   {mod.num}
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{mod.title}</h3>
                 <p className="text-sm text-slate-400 mb-4">{mod.desc}</p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {mod.tags.map(tag => (
-                    <span key={tag} className="text-xs font-semibold bg-indigo-500/10 text-indigo-400 px-2 py-1 rounded-md border border-indigo-500/20">
+                    <span key={tag} className="text-xs font-semibold px-2 py-1 rounded-md" style={{ backgroundColor: 'rgba(108, 99, 255, 0.1)', color: '#FF6584', border: '1px solid rgba(255, 101, 132, 0.3)' }}>
                       {tag}
                     </span>
                   ))}
@@ -478,7 +517,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-gradient-to-br from-slate-950 via-purple-950/20 to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Target Audience</div>
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Target Audience</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Who Should Take a Cybersecurity Course</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Our comprehensive cybersecurity training is designed for professionals at every stage of their career journey.</p>
           </div>
@@ -508,7 +547,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Career Paths</div>
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Career Paths</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Job Roles For Cybersecurity Training</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Explore diverse career opportunities in the booming cybersecurity industry with our specialized training.</p>
           </div>
@@ -542,7 +581,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-gradient-to-br from-slate-950 via-indigo-950/20 to-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Tools Mastery</div>
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Tools Mastery</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Tools Covered For Cybersecurity Course</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Master industry-standard cybersecurity tools through hands-on practice and real-world scenarios.</p>
           </div>
@@ -572,7 +611,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Complete Package</div>
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Complete Package</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">What's Included in Our Cybersecurity Course</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">Everything you need to become a certified cybersecurity professional with job-ready skills.</p>
           </div>
@@ -600,7 +639,7 @@ const CyberSecurity = () => {
       <section className="py-20 bg-slate-900 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-             <div className="text-purple-500 font-bold text-sm tracking-widest uppercase mb-2">Alumni Stories</div>
+             <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Alumni Stories</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Real Results from Bangalore</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">See what our graduates have accomplished after taking our Cyber Security course.</p>
           </div>
@@ -648,7 +687,7 @@ const CyberSecurity = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <div>
-              <div className="text-purple-400 font-bold text-sm tracking-widest uppercase mb-2">Bangalore Batches</div>
+              <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Bangalore Batches</div>
               <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Ready to Secure Your Future?</h2>
               <p className="text-slate-300 text-lg mb-8">Join the elite rank of Cyber Security professionals. Choose a schedule that fits your life.</p>
               
@@ -714,7 +753,7 @@ const CyberSecurity = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <div>
-              <div className="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">PEOPLECLICK <span className="text-purple-500">LEARNING</span></div>
+              <div className="text-2xl md:text-3xl font-black tracking-tight text-white mb-3">PEOPLECLICK <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>LEARNING</span></div>
               <p className="text-slate-400 text-sm sm:text-base leading-relaxed">We are a leading online education platform offering 50+ courses to enhance your skills and abilities. With over 1,000+ success stories, we help learners get job-ready in cybersecurity.</p>
             </div>
 
@@ -729,18 +768,18 @@ const CyberSecurity = () => {
             <div>
               <h4 className="text-white font-bold mb-4">Get in Touch</h4>
               <ul className="space-y-3 text-sm text-slate-300">
-                <li className="flex items-start gap-2"><span>📞</span> <a href="tel:+917619343001" className="hover:text-purple-400 transition-colors">+91 7619 343 001 - Bangalore</a></li>
-                <li className="flex items-start gap-2"><span>📞</span> <a href="tel:+918925449073" className="hover:text-purple-400 transition-colors">+91 8925 449 073 - Coimbatore</a></li>
-                <li className="flex items-start gap-2"><span>✉</span> <a href="mailto:training@peopleclick.in" className="hover:text-purple-400 transition-colors">training@peopleclick.in</a></li>
+                <li className="flex items-start gap-2"><span>📞</span> <a href="tel:+917619343001" className="transition-colors" style={{ color: '#6C63FF' }}>+91 7619 343 001 - Bangalore</a></li>
+                <li className="flex items-start gap-2"><span>📞</span> <a href="tel:+918925449073" className="transition-colors" style={{ color: '#6C63FF' }}>+91 8925 449 073 - Coimbatore</a></li>
+                <li className="flex items-start gap-2"><span>✉</span> <a href="mailto:training@peopleclick.in" className="transition-colors" style={{ color: '#6C63FF' }}>training@peopleclick.in</a></li>
               </ul>
             </div>
 
             {/* <div>
               <h4 className="text-white font-bold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm text-slate-400">
-                <li><button className="hover:text-purple-400 transition-colors text-left">Terms &amp; Conditions</button></li>
-                <li><button className="hover:text-purple-400 transition-colors text-left">Refund Policy</button></li>
-                <li><button className="hover:text-purple-400 transition-colors text-left">Privacy Policy</button></li>
+                <li><button className="transition-colors text-left" style={{ color: 'inherit' }}>Terms &amp; Conditions</button></li>
+                <li><button className="transition-colors text-left" style={{ color: 'inherit' }}>Refund Policy</button></li>
+                <li><button className="transition-colors text-left" style={{ color: 'inherit' }}>Privacy Policy</button></li>
               </ul>
             </div> */}
           </div>
@@ -753,10 +792,10 @@ const CyberSecurity = () => {
 
       {/* ── MOBILE FLOAT CTA ── */}
       <div className={`fixed bottom-0 left-0 right-0 p-3 bg-slate-900 border-t border-slate-800 flex gap-3 lg:hidden z-50 transition-transform duration-300 transform ${showFloatCta ? 'translate-y-0' : 'translate-y-full'}`}>
-        <a href="tel:+917619343001" className="flex-1 bg-slate-800 text-white text-center font-bold text-xs sm:text-sm py-3 rounded-lg border border-slate-700">
+        <a href="tel:+917619343001" className="flex-1 text-white text-center font-bold text-xs sm:text-sm py-3 rounded-lg border border-slate-700" style={{ backgroundColor: themeColors.surface }}>
           📞 Call Now
         </a>
-        <a href="#lead-form" className="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center font-bold text-xs sm:text-sm py-3 rounded-lg shadow-lg">
+        <a href="#lead-form" className="flex-1 text-white text-center font-bold text-xs sm:text-sm py-3 rounded-lg shadow-lg" style={{ backgroundImage: themeColors.gradientA }}>
           Get Free Demo
         </a>
       </div>
@@ -767,7 +806,8 @@ const CyberSecurity = () => {
           href="https://wa.me/917619343001?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20Cybersecurity%20course" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="group w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:scale-110 transition-all border-2 border-white"
+          className="group w-16 h-16 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all border-2 border-white"
+          style={{ backgroundColor: themeColors.green, boxShadow: '0 10px 20px rgba(34,197,94,0.35)' }}
         >
           <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
