@@ -316,12 +316,16 @@ const CyberSecurity = () => {
                 Now Immediately Enrolling
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-6">
-                Master <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>Cyber Security</span><br className="hidden sm:block" />
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-6 flex flex-col items-start">
+                <span>Mastery <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>Cyber Security</span></span>
+                <div className="flex items-center gap-3 md:gap-4 mt-2 sm:mt-3 text-3xl sm:text-4xl lg:text-5xl text-slate-100">
+                  <span className="text-green-500 font-light translate-y-[-2px] opacity-80">|</span>
+                  <span className="font-bold tracking-tight">Coimbatore</span>
+                </div>
               </h1>
 
               <p className="text-lg text-slate-400 mb-8 max-w-2xl leading-relaxed">
-                No.1 Cybersecurity Course in Bangalore. Learn Practical Skills, Ethical Hacking, Tools, and Defensive Techniques with Advanced Training. Boost your career with our Job Guarantee Program.
+                No.1 Cybersecurity Course in Coimbatore & Bangalore. Learn Practical Skills, Ethical Hacking, Tools, and Defensive Techniques with Advanced Training. Boost your career with our Job Guarantee Program.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-10 text-sm font-medium">
@@ -349,7 +353,7 @@ const CyberSecurity = () => {
                   <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Placement Support</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-black text-white mb-1">₹8-15L</div>
+                  <div className="text-3xl font-black text-white mb-1">₹4-7LPA</div>
                   <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">Avg. Salary Post-Course</div>
                 </div>
               </div>
@@ -559,14 +563,7 @@ const CyberSecurity = () => {
                 <li>Expert Trainers</li>
               </ul>
 
-              <h3 className="text-xl font-bold text-white mt-8 mb-3">Trainer Information</h3>
-              <p className="text-slate-300">Ramesh – Cyber Security Specialist</p>
-              <ul className="list-disc list-inside pl-5 mt-2 text-slate-300 space-y-1">
-                <li>5+ years industry experience</li>
-                <li>Expert in ethical hacking & network security</li>
-                <li>Real-time project exposure</li>
-                <li>Practical teaching approach</li>
-              </ul>
+
             </div>
           </div>
 
@@ -696,12 +693,12 @@ const CyberSecurity = () => {
               <div className="text-sm text-slate-300 font-medium">Placement Assistance</div>
             </div>
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
-              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>10+</div>
+              <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>Ȝ+</div>
               <div className="text-sm text-slate-300 font-medium">Live Projects</div>
             </div>
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
               <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>20+</div>
-              <div className="text-sm text-slate-300 font-medium">Tools Mastered</div>
+              <div className="text-sm text-slate-300 font-medium">Mastery Tools</div>
             </div>
             <div className="hidden lg:block p-6 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-slate-700/50 backdrop-blur hover:border-purple-500/50 transition-all hover:scale-105">
               <div className="text-4xl font-black text-transparent bg-clip-text mb-2" style={{ backgroundImage: themeColors.textGradient }}>24/7</div>
@@ -716,7 +713,7 @@ const CyberSecurity = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Curriculum</div>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Master Cyber Security Syllabus</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Mastery Cyber Security Syllabus</h2>
             <p className="text-slate-400 max-w-2xl text-lg">From basic networking to advanced penetration testing, our curriculum is designed to make you industry-ready from day one.</p>
           </div>
 
@@ -820,7 +817,7 @@ const CyberSecurity = () => {
           <div className="text-center mb-16">
             <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Tools Mastery</div>
             <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Tools Covered For Cybersecurity Course</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Master industry-standard cybersecurity tools through hands-on practice and real-world scenarios.</p>
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Mastery industry-standard cybersecurity tools through hands-on practice and real-world scenarios.</p>
           </div>
 
           <div ref={toolsRef} className="flex gap-5 overflow-x-auto pb-2 md:grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 md:overflow-visible md:pb-0 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-purple-500/40">
@@ -877,7 +874,7 @@ const CyberSecurity = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Alumni Stories</div>
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Real Results from Bangalore</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Real Results from Peopleclick</h2>
             <p className="text-slate-400 max-w-2xl mx-auto text-lg">See what our graduates have accomplished after taking our Cyber Security course.</p>
           </div>
 
@@ -1015,7 +1012,7 @@ const CyberSecurity = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
             <div>
-              <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Bangalore Batches</div>
+              <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Coimbatore & Bangalore Batches</div>
               <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Ready to Secure Your Future?</h2>
               <p className="text-slate-300 text-lg mb-8">Join the elite rank of Cyber Security professionals. Choose a schedule that fits your life.</p>
 
@@ -1032,8 +1029,8 @@ const CyberSecurity = () => {
                 {/* Batch 2: Cyber Security – Zeta-4 */}
                 <div className="bg-slate-900/80 border border-green-500/40 p-5 rounded-xl flex justify-between items-center backdrop-blur">
                   <div>
-                    <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CalendarDays className="w-5 h-5" color="#66ff00" /> Cyber Security ·</h4>
-                    <p className="text-sm text-slate-400">Mon – Fri · 9:30 AM – 11:00 AM</p>
+                    <h4 className="text-white font-bold mb-1 flex items-center gap-2"><CalendarDays className="w-5 h-5" color="#66ff00" /> CYBER SECURITY</h4>
+                    <p className="text-xs text-slate-400 tracking-wide">ADMISSION AVAILABLE</p>
                   </div>
                   <span className="text-xs font-bold bg-green-500/20 text-green-400 px-3 py-1 rounded-full border border-green-500/30 whitespace-nowrap">Filling Fast</span>
                   {/* <span className="text-xs font-bold bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full border border-purple-500/30 whitespace-nowrap">Enrolling</span> */}
