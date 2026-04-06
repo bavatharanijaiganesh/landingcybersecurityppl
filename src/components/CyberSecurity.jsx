@@ -4,24 +4,12 @@ import {
   GraduationCap, Briefcase, RefreshCw, TrendingUp, Building, DollarSign,
   Search, Swords, Shield, ZoomIn, BarChart, Terminal, Map, Siren,
   Hammer, Brain, Target, BookOpen, Bot, Phone, Rocket, Mail,
-  Lock, CalendarDays, CreditCard, Play, X, Loader2, AlertCircle
+  Lock, CalendarDays, CreditCard, Play, X, Loader2, AlertCircle, Code, Award
 } from 'lucide-react';
 
-// ─────────────────────────────────────────────
-// 🔑  EmailJS Configuration
-//  1. Go to https://www.emailjs.com/ and create a FREE account
-//  2. Add an Email Service (Gmail, Outlook, etc.) → copy Service ID
-//  3. Create an Email Template with variables:
-//     {{from_name}}, {{from_phone}}, {{from_email}}, {{schedule}}, {{to_email}}
-//  4. Copy your Public Key from Account → API Keys
-//  5. Replace the three placeholders below:
-// ─────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = 'service_ar60q9f';
 const EMAILJS_TEMPLATE_ID = 'template_c302i4n';
 const EMAILJS_PUBLIC_KEY = '2CGO8qiSosH5K1xfS';
-
-// Recipients are set directly inside the EmailJS template's "To Email" field:
-// admin@peopleclick.in, training@peopleclick.in, digitalmarketing@peopleclick.in
 
 const CyberSecurity = () => {
   const [showFloatCta, setShowFloatCta] = useState(false);
@@ -124,26 +112,23 @@ const CyberSecurity = () => {
   };
 
   const checkEmailDomainExists = async (email) => {
-    // Uses a free public API to verify the domain has valid MX records
     try {
       const domain = email.split('@')[1];
       const response = await fetch(
         `https://dns.google/resolve?name=${domain}&type=MX`,
         { signal: AbortSignal.timeout(5000) }
       );
-      if (!response.ok) return true; // If API fails, allow through
+      if (!response.ok) return true;
       const json = await response.json();
-      // Status 0 = NOERROR, and must have Answer records
       if (json.Status !== 0 || !json.Answer || json.Answer.length === 0) {
         return false;
       }
       return true;
     } catch {
-      return true; // Network issue → allow through
+      return true;
     }
   };
 
-  // ── Field-level blur handlers ───────────────────────────────────
   const handlePhoneBlur = (e) => {
     const err = validatePhone(e.target.value);
     setFieldErrors(prev => ({ ...prev, phone: err }));
@@ -169,7 +154,6 @@ const CyberSecurity = () => {
     }
   };
 
-  // ── Submit handler ──────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
@@ -191,7 +175,6 @@ const CyberSecurity = () => {
       return;
     }
 
-    // 3) Verify email domain has real MX records
     setIsSubmitting(true);
     const domainOk = await checkEmailDomainExists(data.email);
     if (!domainOk) {
@@ -203,7 +186,6 @@ const CyberSecurity = () => {
       return;
     }
 
-    // 4) Send ONE email via EmailJS — all 3 recipients are set in the template's To field
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
@@ -259,11 +241,10 @@ const CyberSecurity = () => {
       }}
     >
 
-      {/* ── Salso TICKY HEADER ── */}
       <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-purple-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div className="text-xl md:text-2xl font-black tracking-tight text-white w-full sm:w-auto text-center sm:text-left">
-            PEOPLECLICK <span className="text-transparent bg-clip-text" style={{ backgroundImage: themeColors.textGradient }}>LEARNING</span>
+          <div className="w-full sm:w-auto flex justify-center sm:justify-start items-center">
+            <img src={`${process.env.PUBLIC_URL}/ppl-logo.jpeg`} alt="Peopleclick Learning" className="h-10 md:h-12 w-auto object-contain" />
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-end gap-2 w-full sm:w-auto">
@@ -287,29 +268,13 @@ const CyberSecurity = () => {
         </div>
       </header>
 
-      {/* ── HERO SECTION ── */}
       <div className="relative overflow-hidden w-full">
-        {/* Abstract Background Gradients */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[600px] bg-gradient-to-r from-purple-600/30 via-pink-600/20 to-indigo-600/30 blur-[150px] rounded-full pointer-events-none animate-pulse"></div>
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-gradient-to-l from-indigo-600/25 to-cyan-600/20 blur-[120px] rounded-full pointer-events-none animate-pulse delay-1000"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-r from-emerald-600/20 to-teal-600/15 blur-[100px] rounded-full pointer-events-none animate-pulse delay-500"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24 relative z-10">
-
-          {/* <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="flex items-center gap-3 bg-slate-900/80 border border-slate-800 px-4 py-2 rounded-full">
-              <div className="w-8 h-8 rounded-full bg-pink-600 text-white font-bold flex items-center justify-center text-sm">
-                PP
-              </div>
-              <div className="text-white font-semibold text-sm">Pavi Pavi</div>
-              <div className="text-slate-500 text-xs">a month ago</div>
-            </div>
-            <div className="text-yellow-500 text-lg">★</div>
-          </div> */}
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
-            {/* Left: Copy */}
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider mb-6" style={{ backgroundColor: 'rgba(108, 99, 255, 0.1)', borderColor: 'rgba(255, 101, 132, 0.3)', backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(254, 6, 6, 0.99)' }}></span>
@@ -325,19 +290,19 @@ const CyberSecurity = () => {
               </h1>
 
               <p className="text-lg text-slate-400 mb-8 max-w-2xl leading-relaxed">
-                No.1 Cybersecurity Course in Coimbatore & Bangalore. Learn Practical Skills, Ethical Hacking, Tools, and Defensive Techniques with Advanced Training. Boost your career with our Job Guarantee Program.
+                No.1 Cybersecurity Course in Coimbatore & Bangalore. Learn Practical Skills, Ethical Hacking, Tools, and Defensive Techniques with Advanced Training. Boost your career with our Job Guarantee Program and earn an <a href="#internship-section" className="font-bold transition-all cursor-pointer hover:opacity-80" style={{ color: '#66ff00' }}>exclusive IT company internship</a>.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-10 text-sm font-medium">
+                <span className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-slate-300">
+                  <CheckIcon /> Earn an IT Company Internship
+                </span>
                 <span className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-slate-300">
                   <CheckIcon /> 10+ years of Experinece Industrial experts
                 </span>
                 <span className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-slate-300">
                   <CheckIcon /> Hands-on Tools
                 </span>
-                {/* <span className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-slate-300">
-                  <CheckIcon /> Job Guarantee
-                </span> */}
                 <span className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-2 rounded-full text-slate-300">
                   <CheckIcon /> Certifications
                 </span>
@@ -368,16 +333,6 @@ const CyberSecurity = () => {
                 {!formSubmitted ? (
                   <>
                     <h3 className="text-2xl font-bold text-white mb-3 flex items-center gap-2">Get Free Demo Class <Rocket className="w-6 h-6" color="#66ff00" /></h3>
-
-                    {/* Cute Instructions */}
-                    {/* <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 mb-6 relative overflow-hidden group border-l-4 shadow-[0_0_15px_rgba(102,255,0,0.05)] transition-all hover:bg-green-500/15" style={{borderLeftColor: themeColors.green}}>
-                      <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-green-400/20 to-teal-400/20 blur-xl group-hover:scale-150 transition-transform"></div>
-                      <p className="text-sm text-slate-200 font-medium relative z-10 leading-relaxed flex items-start gap-2">
-                        <span className="inline-block animate-bounce text-lg mt-0.5">✨</span> 
-                        <span>Yay! You made it. Just fill out these quick details below and our super friendly counsellor will connect with you to book your completely free demo class!</span>
-                      </p>
-                    </div> */}
-
                     <form onSubmit={handleSubmit} className="space-y-4 text-left" noValidate>
 
                       {/* Full Name */}
@@ -484,6 +439,40 @@ const CyberSecurity = () => {
           </div>
         </div>
       </div>
+      {/* ── COURSE HIGHLIGHTS ── */}
+      <section className="py-20 bg-gradient-to-b from-slate-950 to-slate-900 border-t border-slate-800 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-green-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ color: themeColors.green }}>Why Join Us?</div>
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Course Highlights</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto text-lg">Everything you need to kickstart and accelerate your career in cyber security.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: <BookOpen className="w-8 h-8" color="#66ff00" />, title: 'Beginner to Advanced Training', desc: 'Start from the basics and strictly build your way up to advanced defensive techniques.' },
+              { icon: <Code className="w-8 h-8" color="#66ff00" />, title: 'Real-Time Projects', desc: 'Work on live scenarios that simulate real-world cyber threats and defensive protocols.' },
+              { icon: <Terminal className="w-8 h-8" color="#66ff00" />, title: 'Hands-on Ethical Hacking', desc: 'Gain core practical experience by performing authorized, simulated cyberattacks.' },
+              { icon: <Award className="w-8 h-8" color="#66ff00" />, title: 'Industry Certification', desc: 'Earn recognized training certificates that significantly validate your skills to top global employers.' },
+              { icon: <Briefcase className="w-8 h-8" color="#66ff00" />, title: '100% Placement Assistance', desc: 'Get dedicated support for resume building, mock interviews, and guaranteed job interviews.' },
+              { icon: <GraduationCap className="w-8 h-8" color="#66ff00" />, title: 'Expert Trainers', desc: '10+ years experienced industrial trainers will teach.' }
+            ].map((highlight, idx) => (
+              <div key={idx} className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 p-8 rounded-2xl hover:border-green-500/50 transition-all hover:-translate-y-1 group relative overflow-hidden">
+                {/* Subtle hover gradient inside card */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-500/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                <div className="w-16 h-16 bg-slate-950 rounded-2xl flex items-center justify-center mb-6 border border-slate-800 group-hover:bg-green-500/10 transition-colors shadow-inner relative z-10">
+                  {highlight.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 tracking-wide relative z-10">{highlight.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed relative z-10">{highlight.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── SEO MARKETING SECTION ── */}
       <section className="py-16 bg-slate-950 border-b border-slate-800">
@@ -555,12 +544,13 @@ const CyberSecurity = () => {
 
               <h3 className="text-xl font-bold text-white mt-8 mb-3">Course Highlights</h3>
               <ul className="list-disc list-inside pl-5 space-y-2 text-slate-300">
+                <li>Expert Trainers with 10+ Years of Industry Experience</li>
                 <li>Beginner to Advanced Training</li>
                 <li>Real-Time Projects</li>
                 <li>Hands-on Ethical Hacking</li>
                 <li>Industry Certification</li>
                 <li>100% Placement Assistance</li>
-                <li>Expert Trainers</li>
+                <li>Learn from 10+ Years Experienced Trainers with Real-Time Project Guidance</li>
               </ul>
 
 
@@ -841,6 +831,73 @@ const CyberSecurity = () => {
         </div>
       </section>
 
+      {/* ── WHY CHOOSE PEOPLECLICK & INTERNSHIP ── */}
+      <section id="internship-section" className="py-20 bg-gradient-to-br from-slate-950 via-purple-900/10 to-slate-950 border-t border-slate-800 scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Left: Content */}
+            <div className="order-2 lg:order-1">
+              <div className="font-bold text-sm tracking-widest uppercase mb-2" style={{ backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Exclusive Benefit</div>
+              <h2 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">Why Choose Peopleclick?</h2>
+              <p className="text-slate-300 text-lg mb-6 leading-relaxed">
+                We go beyond standard classroom training. Dedicated learners who demonstrate strong technical aptitude unlock the opportunity for <strong className="text-white">real-time industrial internships</strong> in our separate, fully operational IT company.
+              </p>
+
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <div className="mt-1 bg-green-500/20 p-1 rounded-full"><CheckIcon /></div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">Live Project Experience</h4>
+                    <p className="text-sm text-slate-400">Work directly on real client security infrastructures and threat hunting operations.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="mt-1 bg-green-500/20 p-1 rounded-full"><CheckIcon /></div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">Valid Experience Letter</h4>
+                    <p className="text-sm text-slate-400">Graduate with a recognized internship certificate from an active IT organization, putting your resume ahead of others.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <div className="mt-1 bg-green-500/20 p-1 rounded-full"><CheckIcon /></div>
+                  <div>
+                    <h4 className="text-white font-bold mb-1">Corporate Environment</h4>
+                    <p className="text-sm text-slate-400">Learn professional workflows, Agile methodologies, and corporate communication standards.</p>
+                  </div>
+                </li>
+              </ul>
+
+              <a href="#lead-form" className="inline-block font-bold py-3 px-8 rounded-lg shadow-[0_0_20px_rgba(102,255,0,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(102,255,0,0.5)]"
+                style={{ backgroundColor: themeColors.green, color: '#000000' }}>
+                Start Your Internship Journey
+              </a>
+            </div>
+
+            {/* Right: Images */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-green-500/20 rounded-2xl blur-2xl"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 transform rotate-1 hover:rotate-0 transition-transform duration-500 group">
+                <img src={`${process.env.PUBLIC_URL}/internship.png`} alt="Real-time Industrial Internship" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-slate-900/80 backdrop-blur-md p-4 rounded-xl border border-slate-700/50 shadow-lg inline-block">
+                    <div className="flex items-center gap-3">
+                      <Shield className="w-8 h-8" color="#66ff00" />
+                      <div>
+                        <div className="text-white font-bold">Peopleclick IT Division</div>
+                        <div className="text-xs text-slate-400">Exclusive Internship Partner</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ── WHAT'S INCLUDED ── */}
       <section className="py-20 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -913,12 +970,41 @@ const CyberSecurity = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center overflow-hidden">
             <p className="text-slate-500 text-sm font-semibold mb-6">OUR ALUMNI WORK AT LEADING TECH COMPANIES</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {['IBM', 'TCS', 'Microsoft', 'Amazon', 'Dell', 'HP', 'Cisco', 'Accenture', 'Wipro', 'Infosys'].map(company => (
-                <span key={company} className="px-5 py-2 bg-slate-800 text-slate-300 font-bold rounded-lg border border-slate-700 text-sm hover:bg-slate-700 transition-colors">{company}</span>
-              ))}
+
+            {/* Marquee Wrapper */}
+            <div className="relative w-full overflow-hidden pb-4">
+              {/* Fade edges matching bg-slate-900 */}
+              <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none hidden sm:block"></div>
+              <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-slate-900 to-transparent z-10 pointer-events-none hidden sm:block"></div>
+
+              {/* Seamless scrolling track */}
+              <div className="flex w-max animate-infinite-scroll">
+                {[1, 2].map((_, duplicateIndex) => (
+                  <div key={duplicateIndex} className="flex gap-4 pr-4">
+                    {[
+                      { name: 'IBM', image: 'https://icon.horse/icon/ibm.com' },
+                      { name: 'TCS', slug: 'tata' },
+                      { name: 'Microsoft', image: 'https://icon.horse/icon/microsoft.com' },
+                      { name: 'Amazon', image: 'https://icon.horse/icon/amazon.com' },
+                      { name: 'Dell', slug: 'dell' },
+                      { name: 'HP', slug: 'hp' },
+                      { name: 'Cisco', slug: 'cisco' },
+                      { name: 'Accenture', slug: 'accenture' },
+                      { name: 'Wipro', slug: 'wipro' },
+                      { name: 'Infosys', slug: 'infosys' }
+                    ].map(company => (
+                      <span key={company.name} className="px-5 py-2.5 bg-slate-800 text-slate-300 font-bold rounded-lg border border-slate-700 text-sm hover:bg-slate-700 transition-colors flex items-center gap-3 shadow-sm whitespace-nowrap cursor-default">
+                        <span className="w-8 h-8 flex items-center justify-center bg-white rounded-md overflow-hidden p-1 shadow-inner shrink-0">
+                          <img src={company.image || `https://cdn.simpleicons.org/${company.slug}`} alt={`${company.name} logo`} className="w-full h-full object-contain" onError={(e) => { e.target.parentElement.style.display = 'none'; }} />
+                        </span>
+                        {company.name}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
