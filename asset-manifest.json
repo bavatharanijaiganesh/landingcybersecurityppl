@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/landingcybersecurityppl/static/css/main.67bb067a.css",
-    "main.js": "/landingcybersecurityppl/static/js/main.f481bcf3.js",
-    "static/js/453.0a0b2dba.chunk.js": "/landingcybersecurityppl/static/js/453.0a0b2dba.chunk.js",
-    "index.html": "/landingcybersecurityppl/index.html",
-    "main.67bb067a.css.map": "/landingcybersecurityppl/static/css/main.67bb067a.css.map",
-    "main.f481bcf3.js.map": "/landingcybersecurityppl/static/js/main.f481bcf3.js.map",
-    "453.0a0b2dba.chunk.js.map": "/landingcybersecurityppl/static/js/453.0a0b2dba.chunk.js.map"
+    "main.css": "/cybersecurity/static/css/main.67bb067a.css",
+    "main.js": "/cybersecurity/static/js/main.fae0209d.js",
+    "static/js/453.0a0b2dba.chunk.js": "/cybersecurity/static/js/453.0a0b2dba.chunk.js",
+    "index.html": "/cybersecurity/index.html",
+    "main.67bb067a.css.map": "/cybersecurity/static/css/main.67bb067a.css.map",
+    "main.fae0209d.js.map": "/cybersecurity/static/js/main.fae0209d.js.map",
+    "453.0a0b2dba.chunk.js.map": "/cybersecurity/static/js/453.0a0b2dba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67bb067a.css",
-    "static/js/main.f481bcf3.js"
+    "static/js/main.fae0209d.js"
   ]
 }
