@@ -244,7 +244,7 @@ const CyberSecurity = () => {
       <header className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-purple-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div className="w-full sm:w-auto flex justify-center sm:justify-start items-center">
-            <img src={`${process.env.PUBLIC_URL}/ppl-logo.jpeg`} alt="Peopleclick Learning" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={`${process.env.PUBLIC_URL}/peopleclick_no_bg.png`} alt="Peopleclick Learning" className="h-10 md:h-12 w-auto object-contain" />
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-center md:justify-end gap-2 w-full sm:w-auto">
@@ -278,7 +278,7 @@ const CyberSecurity = () => {
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider mb-6" style={{ backgroundColor: 'rgba(108, 99, 255, 0.1)', borderColor: 'rgba(255, 101, 132, 0.3)', backgroundImage: themeColors.textGradient, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'rgba(254, 6, 6, 0.99)' }}></span>
-                Now Immediately Enrolling
+                Entroll Now Immediately
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-6 flex flex-col items-start">
