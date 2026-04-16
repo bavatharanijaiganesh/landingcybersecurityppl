@@ -68,7 +68,68 @@ const CyberSecurity = () => {
       document.head.appendChild(meta);
     }
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    // SEO structured data
+    let scriptSchema = document.querySelector('script[type="application/ld+json"]');
+    if (!scriptSchema) {
+      scriptSchema = document.createElement('script');
+      scriptSchema.type = 'application/ld+json';
+      document.head.appendChild(scriptSchema);
+    }
+    scriptSchema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Peopleclick Learning",
+      "url": "https://www.peopleclick.in/",
+      "logo": "https://www.peopleclick.in/logo.png",
+      "image": "https://www.peopleclick.in/cyber-security-course.jpg",
+      "description": "Join the best Cyber Security Course in Coimbatore with 100% placement support. Learn ethical hacking, network security, and cybersecurity tools with real-time projects.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1st Floor, Ratna RK Buildings, 141A, Diwan Bahadur Rd, R.S. Puram",
+        "addressLocality": "Coimbatore",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "641002",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "11.0086",
+        "longitude": "76.9558"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8925449073",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": ["English", "Tamil"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/PeopleClickSolutions",
+        "https://www.instagram.com/peopleclick_learning/?hl=en",
+        "https://www.linkedin.com/company/106359963/admin/dashboard/"
+      ],
+      "hasCourse": {
+        "@type": "Course",
+        "name": "Cyber Security Course in Coimbatore",
+        "description": "Comprehensive cybersecurity training covering ethical hacking, penetration testing, network security, and real-time projects with placement assistance.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Peopleclick Learning",
+          "sameAs": "https://www.peopleclick.in/"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Coimbatore"
+      }
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scriptSchema && scriptSchema.parentNode) {
+        scriptSchema.parentNode.removeChild(scriptSchema);
+      }
+    };
   }, []);
 
   useEffect(() => {
