@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cybersecurity-course-in-coimbatore/static/css/main.9ce590ac.css",
-    "main.js": "/cybersecurity-course-in-coimbatore/static/js/main.ca1d4973.js",
+    "main.js": "/cybersecurity-course-in-coimbatore/static/js/main.d9d9cd99.js",
     "static/js/453.0a0b2dba.chunk.js": "/cybersecurity-course-in-coimbatore/static/js/453.0a0b2dba.chunk.js",
     "index.html": "/cybersecurity-course-in-coimbatore/index.html",
     "main.9ce590ac.css.map": "/cybersecurity-course-in-coimbatore/static/css/main.9ce590ac.css.map",
-    "main.ca1d4973.js.map": "/cybersecurity-course-in-coimbatore/static/js/main.ca1d4973.js.map",
+    "main.d9d9cd99.js.map": "/cybersecurity-course-in-coimbatore/static/js/main.d9d9cd99.js.map",
     "453.0a0b2dba.chunk.js.map": "/cybersecurity-course-in-coimbatore/static/js/453.0a0b2dba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ce590ac.css",
-    "static/js/main.ca1d4973.js"
+    "static/js/main.d9d9cd99.js"
   ]
 }
